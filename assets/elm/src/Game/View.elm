@@ -110,50 +110,50 @@ sidebar model =
                     , justifyContent spaceBetween
                     , marginBottom ms0
                     ]
-            ]
-            [ div
-                [ ]
-                [ img
-                    [ src assets.logoLight
-                    , css
-                        [ Css.maxWidth (px 300)
-                        , Css.display Css.block
-                        , Css.marginTop Css.zero
-                        , Css.marginBottom Css.zero
+                ]
+                [ div
+                    [ ]
+                    [ img
+                        [ src assets.logoLight
+                        , css
+                            [ Css.maxWidth (px 300)
+                            , Css.display Css.block
+                            , Css.marginTop Css.zero
+                            , Css.marginBottom Css.zero
+                            ]
+                        ]
+                        []
+                    ]
+                , div
+                    [ css
+                        [ displayFlex
+                        , alignItems center
                         ]
                     ]
-                    []
-                ]
-            , div
-                [ css
-                    [ displayFlex
-                    , alignItems center
-                    ]
-                ]
-                [ img
-                    [ src assets.logoBeginner
-                    , css
-                        [ Css.maxHeight (px 100)
-                        , marginRight ms2
+                    [ img
+                        [ src assets.logoBeginner
+                        , css
+                            [ Css.maxHeight (px 100)
+                            , marginRight ms2
+                            ]
                         ]
-                    ]
-                    []
-                , img
-                    [ src assets.logoIntermediate
-                    , css
-                        [ Css.maxHeight (px 100)
-                        , marginRight ms2
+                        []
+                    , img
+                        [ src assets.logoIntermediate
+                        , css
+                            [ Css.maxHeight (px 100)
+                            , marginRight ms2
+                            ]
                         ]
+                        []
+                    , img
+                        [ src assets.logoExpert
+                        , css
+                            [ Css.maxHeight (px 100) ]
                     ]
                     []
-                , img
-                    [ src assets.logoExpert
-                    , css
-                        [ Css.maxHeight (px 100) ]
+                    ]
                 ]
-                []
-                ]
-            ]
 
 
         content =
@@ -212,6 +212,8 @@ snake alive snake =
                 , css
                     [ Css.height (px 10)
                     , transition
+                    , position absolute
+                    , bottom Css.zero
                     ]
                 ]
                 []
@@ -240,7 +242,6 @@ snake alive snake =
         [ css
             [ marginBottom ms_1
             , opacity (num containerOpacity)
-            , position relative
             ]
         ]
         [ flag (avatar [ src snake.headUrl ] [])
@@ -350,8 +351,8 @@ sidebarControls =
 avatar : List (Attribute msg) -> List (Html msg) -> Html msg
 avatar =
     styled img
-        [ Css.width (px 96)
-        , Css.height (px 96)
+        [ Css.width (px 84)
+        , Css.height (px 84)
         ]
 
 
@@ -389,7 +390,11 @@ flag img_ body =
             ]
         ]
         [ img_
-        , container [] body
+        , container
+            [ css
+                [ position relative ]
+            ]
+            body
         ]
 
 
