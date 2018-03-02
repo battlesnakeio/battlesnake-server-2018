@@ -196,7 +196,7 @@ snakeView record =
                     "1.0"
 
                 Just _ ->
-                    "0.25"
+                    "0.45"
 
         reduce : Vec2 -> Acc -> Acc
         reduce current acc =

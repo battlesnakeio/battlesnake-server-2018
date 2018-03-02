@@ -207,16 +207,34 @@ snake alive snake =
             ]
 
         healthbar =
-            div
-                [ style healthbarStyle
-                , css
-                    [ Css.height (px 10)
-                    , transition
-                    , position absolute
-                    , bottom Css.zero
+            div []
+                [ div
+                    [ style healthbarStyle
+                    , css
+                        [ Css.height (px 10)
+                        , transition
+                        , position absolute
+                        , bottom Css.zero
+                        , zIndex (int 2)
+                        ]
                     ]
+                    []
+                , div
+                    [ style
+                        [ ( "background-color", snake.color)
+                        ]
+                    , css
+                        [ position absolute
+                        , bottom Css.zero
+                        , Css.width (pct 100)
+                        , Css.height (px 10)
+                        , opacity (num 0.4)
+                        , zIndex (int 1)
+                        , transition
+                        ]
+                    ]
+                    []
                 ]
-                []
 
         healthText =
             if alive then
