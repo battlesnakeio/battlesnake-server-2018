@@ -61,7 +61,7 @@ gameStateDecoder =
 
 boardDecoder : Decoder Board
 boardDecoder =
-    map7 Board
+    map8 Board
         ("turn" := int)
         ("snakes" := list snakeDecoder)
         ("deadSnakes" := list snakeDecoder)
@@ -69,6 +69,7 @@ boardDecoder =
         ("food" := list vec2Decoder)
         ("width" := int)
         ("height" := int)
+        ("division" := string)
 
 
 vec2Decoder : Decoder Vec2

@@ -25,6 +25,7 @@ type alias Board =
     , food : List Vec2
     , width : Int
     , height : Int
+    , division : String
     }
 
 

@@ -23,7 +23,8 @@ view : Model -> Html Msg
 view model =
     div
         [ css
-            [ Css.backgroundImage (url (replace " " "%20" assets.background))
+            [ color palette.white
+            , Css.backgroundImage (url (replace " " "%20" assets.background))
             , Css.backgroundSize (pct 100)
             ]
         ]
@@ -237,8 +238,9 @@ snake alive snake =
     in
     div
         [ css
-            [ marginBottom ms0
+            [ marginBottom ms_1
             , opacity (num containerOpacity)
+            , position relative
             ]
         ]
         [ flag (avatar [ src snake.headUrl ] [])
@@ -250,24 +252,33 @@ snake alive snake =
                 ]
                 [ span [
                     css
-                    [ fontSize ms2
-                    , fontWeight (int 800)
-                    , lineHeight (int 1)
-                    , paddingBottom ms0
-                    , paddingLeft ms0 ]
-                ] [ text snake.name ]
-                , span [] [ text healthText ]
+                        [ paddingBottom ms_2
+                        , paddingLeft ms0
+                        , fontSize ms2
+                        , fontWeight (int 800)
+                        , lineHeight (int 1)
+                        ]
+                    ]
+                    [ text snake.name ]
+                , span
+                    [ css
+                        [ color palette.medgrey ]
+                    ]
+                    [ text healthText ]
                 ]
-            , healthbar
             , div
                 [ css
                     [ maxWidth theme.sidebarWidth
+                    , paddingLeft ms0
+                    , paddingBottom ms_1
+                    , color palette.medgrey
                     , whiteSpace Css.noWrap
                     , textOverflow ellipsis
                     , overflow Css.hidden
                     ]
                 ]
                 [ text taunt ]
+            , healthbar
             ]
         ]
 

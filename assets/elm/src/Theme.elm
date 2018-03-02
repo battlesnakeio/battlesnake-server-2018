@@ -15,9 +15,10 @@ assets =
     }
 
 
-pallet =
+palette =
     { blue = hex "#99e1d9"
     , grey = hex "#5d576b"
+    , medgrey = hex "#919191"
     , lightgrey = hex "#e8e8e8"
     , pink = hex "#f7567c"
     , purple = hex "#5c2e8c"
@@ -27,13 +28,13 @@ pallet =
 
 
 theme =
-    { bgPrimary = pallet.purple
-    , bgSecondary = pallet.white
-    , buttonAccent = pallet.lightgrey
+    { bgPrimary = palette.purple
+    , bgSecondary = palette.white
+    , buttonAccent = palette.lightgrey
     , sidebarPlayerHeight = ms 3
     , sidebarWidth = px 900
-    , tile = pallet.lightgrey
-    , food = pallet.pink
+    , tile = palette.lightgrey
+    , food = palette.pink
     }
 
 
