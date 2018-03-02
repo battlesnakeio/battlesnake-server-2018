@@ -267,8 +267,7 @@ endpoint on each turn. The game server expects a JSON response within 200ms.
 
 ### POST `/end`
 
-A request including all the current game information will be issued to this
-endpoint on each turn.
+A request including end game information such as winners, dead snakes, and death reasons will be issued to this endpoint at the end of the game.
 
 Possible death causes are:
 
