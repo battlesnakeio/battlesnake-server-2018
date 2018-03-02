@@ -103,33 +103,57 @@ sidebar : Model -> Html Msg
 sidebar model =
     let
         sidebarLogo =
-            div [ css [ marginBottom ms0 ] ]
-                [ div []
-                    [ img
-                        [ src assets.logoLight
-                        , css
-                            [ Css.maxWidth (px 300)
-                            , Css.display Css.block
-                            , Css.marginTop Css.zero
-                            , Css.marginBottom Css.zero
-                            ]
+            div
+                [ css
+                    [ displayFlex
+                    , justifyContent spaceBetween
+                    , marginBottom ms0
+                    ]
+            ]
+            [ div
+                [ ]
+                [ img
+                    [ src assets.logoLight
+                    , css
+                        [ Css.maxWidth (px 300)
+                        , Css.display Css.block
+                        , Css.marginTop Css.zero
+                        , Css.marginBottom Css.zero
                         ]
-                        []
-
-                    -- , img
-                    --     [ src assets.logoExpert
-                    --     , css
-                    --         [ Css.maxHeight (px 100)
-                    --         , Css.display Css.block
-                    --         , Css.marginLeft Css.auto
-                    --         , Css.marginRight Css.auto
-                    --         , Css.marginTop Css.zero
-                    --         , Css.marginBottom ms2
-                    --         ]
-                    -- ]
-                    -- []
+                    ]
+                    []
+                ]
+            , div
+                [ css
+                    [ displayFlex
+                    , alignItems center
                     ]
                 ]
+                [ img
+                    [ src assets.logoBeginner
+                    , css
+                        [ Css.maxHeight (px 100)
+                        , marginRight ms2
+                        ]
+                    ]
+                    []
+                , img
+                    [ src assets.logoIntermediate
+                    , css
+                        [ Css.maxHeight (px 100)
+                        , marginRight ms2
+                        ]
+                    ]
+                    []
+                , img
+                    [ src assets.logoExpert
+                    , css
+                        [ Css.maxHeight (px 100) ]
+                ]
+                []
+                ]
+            ]
+
 
         content =
             case model.gameState of
@@ -185,7 +209,7 @@ snake alive snake =
             div
                 [ style healthbarStyle
                 , css
-                    [ Css.height (px 15)
+                    [ Css.height (px 10)
                     , transition
                     ]
                 ]
@@ -224,20 +248,27 @@ snake alive snake =
                     , justifyContent spaceBetween
                     ]
                 ]
-                [ span [] [ text snake.name ]
+                [ span [
+                    css
+                    [ fontSize ms2
+                    , fontWeight (int 800)
+                    , lineHeight (int 1)
+                    , paddingBottom ms0
+                    , paddingLeft ms0 ]
+                ] [ text snake.name ]
                 , span [] [ text healthText ]
                 ]
             , healthbar
-            ]
-        , div
-            [ css
-                [ maxWidth theme.sidebarWidth
-                , whiteSpace Css.noWrap
-                , textOverflow ellipsis
-                , overflow Css.hidden
+            , div
+                [ css
+                    [ maxWidth theme.sidebarWidth
+                    , whiteSpace Css.noWrap
+                    , textOverflow ellipsis
+                    , overflow Css.hidden
+                    ]
                 ]
+                [ text taunt ]
             ]
-            [ text taunt ]
         ]
 
 
@@ -308,9 +339,8 @@ sidebarControls =
 avatar : List (Attribute msg) -> List (Html msg) -> Html msg
 avatar =
     styled img
-        [ marginRight ms0
-        , Css.width theme.sidebarPlayerHeight
-        , Css.height theme.sidebarPlayerHeight
+        [ Css.width (px 96)
+        , Css.height (px 96)
         ]
 
 
@@ -334,7 +364,8 @@ btn =
             , color theme.buttonAccent
             ]
         , hover
-            [ backgroundColor theme.buttonAccent ]
+            [ backgroundColor theme.buttonAccent
+            , color theme.bgPrimary ]
         ]
 
 
