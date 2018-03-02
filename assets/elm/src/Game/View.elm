@@ -135,6 +135,7 @@ sidebar model =
                         , css
                             [ Css.maxHeight (px 100)
                             , marginRight ms2
+                            , opacity (num (logoOpacity "beginner" model))
                             ]
                         ]
                         []
@@ -143,13 +144,16 @@ sidebar model =
                         , css
                             [ Css.maxHeight (px 100)
                             , marginRight ms2
+                            , opacity (num (logoOpacity "intermediate" model))
                             ]
                         ]
                         []
                     , img
                         [ src assets.logoExpert
                         , css
-                            [ Css.maxHeight (px 100) ]
+                            [ Css.maxHeight (px 100)
+                            , opacity (num (logoOpacity "expert" model))
+                            ]
                     ]
                     []
                     ]
@@ -179,6 +183,19 @@ sidebar model =
         [ sidebarLogo
         , content
         ]
+
+
+logoOpacity : String -> Model -> Float
+logoOpacity division model =
+    case model.gameState of
+        Nothing ->
+            0.25
+
+        Just { board } ->
+            if board.division == division then
+                1
+            else
+                0.25
 
 
 snake : Bool -> Snake -> Html msg
